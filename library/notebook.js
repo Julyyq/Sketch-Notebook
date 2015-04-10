@@ -1,8 +1,15 @@
 //#import 'Notebook/library/sandbox-sketch-utils.js'
 
 var com = {};
+var selection;
+var doc;
 
 com.notebook = {
+
+    onRun: function(context) {
+        selection = context.selection;
+        doc = context.document;
+    },
 
     config : {
         commentVMargin : 30,
@@ -134,7 +141,6 @@ com.notebook = {
         }else{
             layers = container.children();
         }
-
         var queryResult = layers.filteredArrayUsingPredicate(predicate);
 
         if(returnArray) return queryResult;
@@ -1171,3 +1177,4 @@ com.notebook = {
     debug : false
 
  } 
+ com.notebook.onRun(context);
